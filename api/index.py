@@ -40,6 +40,24 @@ def normalize_slug(raw_url: str) -> str:
     return slug.strip("/")
 
 
+def get_real_target_from_request(fallback_target: str = "") -> str:
+    """Membaca path asli website target sebelum di-rewrite oleh Vercel."""
+    candidates = [
+        request.args.get("url", ""),
+        request.headers.get("x-vercel-original-path", ""),
+        request.headers.get("x-matched-path", ""),
+        request.environ.get("REQUEST_URI", ""),
+        fallback_target,
+    ]
+    for raw in candidates:
+        if not raw:
+            continue
+        path_only = raw.split("?")[0].strip("/")
+        if path_only and path_only not in ("api/index.py", "favicon.ico", "robots.txt"):
+            return normalize_slug(path_only)
+    return ""
+
+
 def analyze_seo(url: str) -> dict:
     if not url.startswith(("http://", "https://")):
         url = "https://" + url
@@ -236,28 +254,49 @@ def analyze_seo(url: str) -> dict:
     }
 
 
+def run_audit_view(slug: str):
+    try:
+        result = analyze_seo(slug)
+        return render_template("index.html", result=result, error=None, target_slug=slug)
+    except requests.exceptions.Timeout:
+        return render_template(
+            "index.html",
+            result=None,
+            error="Waktu koneksi habis (timeout) saat mengakses website target.",
+            target_slug=slug,
+        )
+    except requests.exceptions.RequestException as e:
+        return render_template(
+            "index.html",
+            result=None,
+            error=f"Gagal mengakses URL '{slug}': {str(e)}",
+            target_slug=slug,
+        )
+
+
 @app.route("/", methods=["GET"])
 def home():
+    slug = get_real_target_from_request()
+    if slug == "page/tentang-kami":
+        return render_template("about.html")
+    if slug:
+        return run_audit_view(slug)
     return render_template("index.html", result=None, error=None, target_slug="")
 
 
 @app.route("/<path:target>", methods=["GET"])
 def report_page(target):
-    # Abaikan permintaan asset otomatis browser
     if target in ("favicon.ico", "robots.txt"):
         return "", 204
-    # Tangani internal rewrite path Vercel agar kembali ke halaman utama
-    if target == "api/index.py":
-        return render_template("index.html", result=None, error=None, target_slug="")
+    if target == "page/tentang-kami":
+        return render_template("about.html")
 
-    slug = normalize_slug(target)
-    try:
-        result = analyze_seo(slug)
-        return render_template("index.html", result=result, error=None, target_slug=slug)
-    except requests.exceptions.Timeout:
-        return render_template("index.html", result=None, error="Waktu koneksi habis (timeout) saat mengakses website target.", target_slug=slug)
-    except requests.exceptions.RequestException as e:
-        return render_template("index.html", result=None, error=f"Gagal mengakses URL '{slug}': {str(e)}", target_slug=slug)
+    slug = get_real_target_from_request(target)
+    if slug == "page/tentang-kami":
+        return render_template("about.html")
+    if not slug:
+        return render_template("index.html", result=None, error=None, target_slug="")
+    return run_audit_view(slug)
 
 
 if __name__ == "__main__":

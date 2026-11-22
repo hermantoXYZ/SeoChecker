@@ -1,8 +1,12 @@
 {
     "rewrites": [
         {
-            "source": "/(.*)",
+            "source": "/page/tentang-kami",
             "destination": "/api/index.py"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/api/index.py?url=$1"
         }
     ]
 }
