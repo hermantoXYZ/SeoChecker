@@ -146,6 +146,16 @@
       background-color: #f4f7fa;
     }
 
+    .cat-badge {
+      display: inline-block;
+      background-color: #e2e8f0;
+      color: #334155;
+      font-size: 10px;
+      padding: 1px 4px;
+      margin-bottom: 2px;
+      border: 1px solid #cbd5e1;
+    }
+
     .item-title {
       font-weight: bold;
       color: #003399;
@@ -304,7 +314,7 @@
     </div>
     <div class="wap-subbar">
       <span>&raquo; Free Mobile &amp; Web SEO Audit Tool</span>
-      <a href="/page/tentang-kami/">[Tentang Kami]</a>
+      <a href="/page/tentang-kami">[Tentang Kami]</a>
     </div>
 
     <!-- Form Pencarian -->
@@ -329,7 +339,7 @@
 
     <!-- Loading Indicator saat Redirect -->
     <div id="loadingBox" class="msg-box msg-loading">
-      Loading... Membuka halaman laporan SEO, harap tunggu...
+      Loading... Memindai parameter On-Page, Technical &amp; Server SEO...
     </div>
 
     <!-- Error Alert -->
@@ -355,11 +365,11 @@
           </span> / 100
         </div>
         <div style="font-size: 11px; color: #555; margin-top: 3px;">
-          Speed: <b>{{ result.load_time }}s</b> |
-          H1: <b>{{ result.headings.h1 }}</b>, H2: <b>{{ result.headings.h2 }}</b>, H3: <b>{{ result.headings.h3 }}</b>
+          Speed: <b>{{ result.load_time }}s</b> | Size: <b>{{ result.html_size_kb }} KB</b> | Words: <b>{{ result.word_count }}</b>
         </div>
         <div style="font-size: 11px; color: #555;">
-          Link Int: <b>{{ result.links.internal }}</b> | Link Ext: <b>{{ result.links.external }}</b> |
+          H1: <b>{{ result.headings.h1 }}</b>, H2: <b>{{ result.headings.h2 }}</b>, H3: <b>{{ result.headings.h3 }}</b> |
+          Link Int/Ext: <b>{{ result.links.internal }}/{{ result.links.external }}</b> |
           Img No-Alt: <b>{{ result.images_missing_alt }}/{{ result.images_total }}</b>
         </div>
       </div>
@@ -371,10 +381,11 @@
         <div class="serp-desc">{{ result.description }}</div>
       </div>
 
-      <div class="sec-bar">[+] Detail Audit Teknis</div>
+      <div class="sec-bar">[+] Detail Audit Teknis ({{ result.checks|length }} Parameter)</div>
       <ul class="wap-list">
         {% for c in result.checks %}
         <li>
+          <div><span class="cat-badge">{{ c.category }}</span></div>
           <div class="item-title">
             &raquo; {{ loop.index }}. {{ c.item }}
             {% if c.status == 'pass' %}
@@ -384,6 +395,7 @@
             {% else %}
               <span class="tag-fail">[FAIL]</span>
             {% endif %}
+            <span style="font-weight:normal; color:#64748b; font-size:11px;">(+{{ c.points }} pts)</span>
           </div>
           <div class="item-detail">{{ c.detail }}</div>
         </li>
@@ -422,7 +434,7 @@
 
     <!-- Footer -->
     <div class="wap-footer">
-      <a href="/page/tentang-kami/">[Tentang Kami]</a> |
+      <a href="/page/tentang-kami">[Tentang Kami]</a> |
       <a href="#top" onclick="window.scrollTo(0,0); return false;">[Top]</a> |
       <a href="/">[Home]</a><br />
       &copy; SEO for Digital Marketing - Powered by <a href="https://github.com/hermantoXYZ">HermantoXYZ</a>
