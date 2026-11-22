@@ -9,6 +9,11 @@ app = Flask(__name__, template_folder="../templates")
 
 app.context_processor(inject_global_context)
 
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_DIR = os.path.join(BASE_DIR, "..", "templates")
+
+app = Flask(__name__, template_folder=TEMPLATE_DIR)
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; SEOCheckerBot/1.0; +https://vercel.app)"
