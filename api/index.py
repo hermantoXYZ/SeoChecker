@@ -1,19 +1,24 @@
+import os
+import sys
 import time
 import urllib.parse
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, redirect, url_for
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+
 from context_processors import inject_global_context
 
-app = Flask(__name__, template_folder="../templates")
+TEMPLATE_DIR = os.path.join(ROOT_DIR, "templates")
 
-app.context_processor(inject_global_context)
-
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE_DIR = os.path.join(BASE_DIR, "..", "templates")
 
 app = Flask(__name__, template_folder=TEMPLATE_DIR)
+app.context_processor(inject_global_context)
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; SEOCheckerBot/1.0; +https://vercel.app)"
@@ -192,4 +197,3 @@ def report_page(target):
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
-
