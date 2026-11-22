@@ -25,12 +25,12 @@ def inject_global_context():
     }
 
 
-@app.route("/page/tentang-kami", methods=["GET"])
+@app.route("/page/tentang-kami/", methods=["GET"])
 def about_page():
     return render_template("about.html")
 
 
-@app.route("/page/panduan-konsep", methods=["GET"])
+@app.route("/page/panduan-konsep/", methods=["GET"])
 def guide_page():
     return render_template("guide.html")
 
@@ -320,11 +320,6 @@ def analyze_seo(url: str) -> dict:
     else:
         add_check("Technical & Server", "Server Configuration", "fail", f"HTTP {response.status_code}, HTTPS: {is_https}, Server: {server_hdr}.", 0, anchor="server-configuration")
 
-    # =========================================================================
-    # E. EXTERNAL FACTORS & CRAWLABILITY (Total: 5 Poin)
-    # =========================================================================
-
-    # 18. External Factors (robots.txt, sitemap.xml & Social Signals) (5 Poin)
     has_robots_txt = False
     has_sitemap = False
     try:
@@ -403,9 +398,9 @@ def run_audit_view(slug: str):
 @app.route("/", methods=["GET"])
 def home():
     slug = get_real_target_from_request()
-    if slug == "page/tentang-kami":
+    if slug == "page/tentang-kami/":
         return render_template("about.html")
-    if slug == "page/panduan-konsep":
+    if slug == "page/panduan-konsep/":
         return render_template("guide.html")
     if slug:
         return run_audit_view(slug)
@@ -416,15 +411,15 @@ def home():
 def report_page(target):
     if target in ("favicon.ico", "robots.txt"):
         return "", 204
-    if target == "page/tentang-kami":
+    if target == "page/tentang-kami/":
         return render_template("about.html")
-    if target == "page/panduan-konsep":
+    if target == "page/panduan-konsep/":
         return render_template("guide.html")
 
     slug = get_real_target_from_request(target)
-    if slug == "page/tentang-kami":
+    if slug == "page/tentang-kami/":
         return render_template("about.html")
-    if slug == "page/panduan-konsep":
+    if slug == "page/panduan-konsep/":
         return render_template("guide.html")
     if not slug:
         return render_template("index.html", result=None, error=None, target_slug="")
@@ -432,4 +427,4 @@ def report_page(target):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=50001)
