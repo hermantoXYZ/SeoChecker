@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% if target_slug %}Audit SEO: {{ target_slug }} - SEOChecker{% else %}SEO for Digital Marketing - Check SEO Your Website{% endif %}</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #d6dde5;
+      font-family: Tahoma, Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      color: #111111;
+      line-height: 1.45;
+    }
+
+    .wap-container {
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-left: 1px solid #99aabb;
+      border-right: 1px solid #99aabb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wap-header {
+      background: linear-gradient(to bottom, #1e5799 0%, #0d3360 100%);
+      color: #ffffff;
+      padding: 8px 10px;
+      border-bottom: 2px solid #ff9900;
+    }
+
+    .wap-header h1 {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .wap-header h1 a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .wap-header h1 span {
+      color: #ffcc00;
+    }
+
+    .wap-subbar {
+      background-color: #e8eef5;
+      border-bottom: 1px solid #b8c7d9;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #334455;
+    }
+
+    .sec-bar {
+      background-color: #2b5b84;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-top: 1px solid #1a3c5a;
+      border-bottom: 1px solid #1a3c5a;
+    }
+
+    .sec-bar-orange {
+      background-color: #e67e00;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-top: 1px solid #b36200;
+      border-bottom: 1px solid #b36200;
+    }
+
+    .box {
+      padding: 10px;
+      background-color: #f7f9fc;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .box label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #0d3360;
+      font-size: 12px;
+    }
+
+    .wap-input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #7f9db9;
+      background-color: #ffffff;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .wap-btn {
+      background: linear-gradient(to bottom, #f5f5f5 0%, #dcdcdc 100%);
+      border: 1px solid #707070;
+      color: #000000;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 14px;
+      cursor: pointer;
+    }
+
+    .wap-btn:active {
+      background: #cccccc;
+    }
+
+    .wap-list {
+      list-style: none;
+    }
+
+    .wap-list li {
+      padding: 7px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      background-color: #ffffff;
+    }
+
+    .wap-list li:nth-child(even) {
+      background-color: #f4f7fa;
+    }
+
+    .item-title {
+      font-weight: bold;
+      color: #003399;
+      font-size: 12px;
+    }
+
+    .item-detail {
+      color: #333333;
+      font-size: 12px;
+      margin-top: 2px;
+      word-break: break-word;
+    }
+
+    .tag-pass {
+      color: #006600;
+      font-weight: bold;
+    }
+
+    .tag-warn {
+      color: #cc6600;
+      font-weight: bold;
+    }
+
+    .tag-fail {
+      color: #cc0000;
+      font-weight: bold;
+    }
+
+    .score-box {
+      padding: 10px;
+      background-color: #fffbe6;
+      border-bottom: 1px solid #e5d48b;
+      text-align: center;
+    }
+
+    .score-num {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .serp-box {
+      padding: 8px 10px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    .serp-title {
+      color: #0000cc;
+      text-decoration: underline;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .serp-url {
+      color: #006621;
+      font-size: 11px;
+      word-break: break-all;
+    }
+
+    .serp-desc {
+      color: #444444;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .share-bar {
+      padding: 6px 10px;
+      background-color: #eef5ff;
+      border-bottom: 1px solid #cbd5e1;
+      font-size: 11px;
+      color: #0d3360;
+      word-break: break-all;
+    }
+
+    .ref-section {
+      background-color: #f9fbfd;
+      border-top: 1px solid #cbd5e1;
+    }
+
+    .ref-intro {
+      padding: 7px 10px;
+      font-size: 11px;
+      color: #334455;
+      background-color: #eef3f8;
+      border-bottom: 1px solid #d5dfe9;
+    }
+
+    .ref-list {
+      list-style: none;
+    }
+
+    .ref-list li {
+      padding: 7px 10px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 11px;
+      color: #222222;
+      line-height: 1.4;
+    }
+
+    .ref-list li:nth-child(even) {
+      background-color: #f4f7fa;
+    }
+
+    .ref-tag {
+      display: inline-block;
+      font-weight: bold;
+      color: #0d3360;
+    }
+
+    .ref-journal {
+      font-style: italic;
+      color: #003399;
+    }
+
+    .msg-box {
+      padding: 8px 10px;
+      font-size: 12px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .msg-error {
+      background-color: #ffe6e6;
+      color: #b30000;
+      font-weight: bold;
+    }
+
+    .msg-loading {
+      display: none;
+      background-color: #eef5ff;
+      color: #0d3360;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .wap-footer {
+      margin-top: auto;
+      background-color: #0d3360;
+      color: #ffffff;
+      text-align: center;
+      font-size: 11px;
+      padding: 8px 10px;
+      border-top: 2px solid #ff9900;
+    }
+
+    .wap-footer a {
+      color: #ffcc00;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="wap-container">
+    <!-- Header -->
+    <div class="wap-header">
+      <h1><a href="/">SEO<span>Checker</span></a></h1>
+    </div>
+    <div class="wap-subbar">
+      &raquo; Free Mobile &amp; Web SEO Audit Tool
+    </div>
+
+    <!-- Form Pencarian -->
+    <div class="sec-bar">[+] Cek Skor SEO Website</div>
+    <div class="box">
+      <form id="auditForm" action="/scan" method="POST">
+        <label for="urlInput">Masukkan Alamat URL:</label>
+        <input
+          type="text"
+          id="urlInput"
+          name="url"
+          class="wap-input"
+          value="{{ target_slug }}"
+          placeholder="contoh: bisdigunm.com"
+          required
+        />
+        <button type="submit" id="submitBtn" class="wap-btn">
+          &raquo; Scan Sekarang
+        </button>
+      </form>
+    </div>
+
+    <!-- Loading Indicator saat Redirect -->
+    <div id="loadingBox" class="msg-box msg-loading">
+      Loading... Membuka halaman laporan SEO, harap tunggu...
+    </div>
+
+    <!-- Error Alert -->
+    {% if error %}
+    <div class="msg-box msg-error">
+      Error: {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- Hasil Analisis (Render pada /nama_webnya) -->
+    {% if result %}
+    <div>
+      <div class="share-bar">
+        <b>Report URL:</b> <a href="/{{ target_slug }}" style="color:#003399;">{{ request.url }}</a>
+      </div>
+
+      <div class="sec-bar-orange">[*] Ringkasan Skor SEO: {{ target_slug }}</div>
+      <div class="score-box">
+        <div>
+          Total Nilai SEO:
+          <span class="score-num {% if result.score >= 80 %}tag-pass{% elif result.score >= 50 %}tag-warn{% else %}tag-fail{% endif %}">
+            {{ result.score }}
+          </span> / 100
+        </div>
+        <div style="font-size: 11px; color: #555; margin-top: 3px;">
+          Speed: <b>{{ result.load_time }}s</b> |
+          H1: <b>{{ result.headings.h1 }}</b>, H2: <b>{{ result.headings.h2 }}</b>, H3: <b>{{ result.headings.h3 }}</b>
+        </div>
+        <div style="font-size: 11px; color: #555;">
+          Link Int: <b>{{ result.links.internal }}</b> | Link Ext: <b>{{ result.links.external }}</b> |
+          Img No-Alt: <b>{{ result.images_missing_alt }}/{{ result.images_total }}</b>
+        </div>
+      </div>
+
+      <div class="sec-bar">[+] Google SERP Preview</div>
+      <div class="serp-box">
+        <div class="serp-title">{{ result.title }}</div>
+        <div class="serp-url">{{ result.final_url }}</div>
+        <div class="serp-desc">{{ result.description }}</div>
+      </div>
+
+      <div class="sec-bar">[+] Detail Audit Teknis</div>
+      <ul class="wap-list">
+        {% for c in result.checks %}
+        <li>
+          <div class="item-title">
+            &raquo; {{ loop.index }}. {{ c.item }}
+            {% if c.status == 'pass' %}
+              <span class="tag-pass">[OK]</span>
+            {% elif c.status == 'warn' %}
+              <span class="tag-warn">[WARN]</span>
+            {% else %}
+              <span class="tag-fail">[FAIL]</span>
+            {% endif %}
+          </div>
+          <div class="item-detail">{{ c.detail }}</div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Reference Models (Jurnal Ilmiah Bereputasi) -->
+    <div class="ref-section">
+      <div class="sec-bar">[+] Reference Models &amp; Academic Basis</div>
+      <div class="ref-intro">
+        Model skoring dan parameter audit On-Page SEO pada platform ini dirumuskan berdasarkan temuan empiris dari publikasi jurnal bereputasi berikut:
+      </div>
+      <ul class="ref-list">
+        <li>
+          <span class="ref-tag">[1]</span> Berman, R., &amp; Katona, Z. (2013). The Role of Search Engine Optimization in Search Marketing. <span class="ref-journal">Marketing Science</span>, 32(4), 644–651.
+        </li>
+        <li>
+          <span class="ref-tag">[2]</span> Evans, M. P. (2007). Analysing Google rankings through search engine optimization data. <span class="ref-journal">Internet Research</span>, 17(1), 21–37.
+        </li>
+        <li>
+          <span class="ref-tag">[3]</span> Killoran, J. B. (2013). How to Use Search Engine Optimization Techniques to Increase Website Visibility. <span class="ref-journal">IEEE Transactions on Professional Communication</span>, 56(1), 50–66.
+        </li>
+        <li>
+          <span class="ref-tag">[4]</span> Zilincan, J. (2015). Search Engine Optimization. <span class="ref-journal">CBU International Conference Proceedings</span>, 3, 506–510.
+        </li>
+        <li>
+          <span class="ref-tag">[5]</span> Luh, C. J., Yang, S. A., &amp; Huang, T. L. D. (2016). Estimating Google's search engine ranking function from a search engine optimization perspective. <span class="ref-journal">Online Information Review</span>, 40(2), 239–255.
+        </li>
+        <li>
+          <span class="ref-tag">[6]
+          </span>
+          Aris, V.,&amp; A.Hermanto (2025) “Social Media Analysis untuk Identifikasi Kualitas Layanan Pada Aplikasi Tokopedia ”, RIGGS: Journal of Artificial Intelligence and Digital Business, 4(4), pp. 74–82. doi: 10.31004/riggs.v4i4.3186.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Footer -->
+    <div class="wap-footer">
+         <a href="/page/tentang-kami">Tentang Kami</a> |
+      <a href="#top" onclick="window.scrollTo(0,0); return false;">[Top]</a> |
+      <a href="/">[Home]</a><br /> 
+      &copy; SEO for Digital Marketing - Powered by <a href="https://github.com/hermantoXYZ">HermantoXYZ</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("auditForm").addEventListener("submit", function () {
+      document.getElementById("loadingBox").style.display = "block";
+      document.getElementById("submitBtn").disabled = true;
+    });
+  </script>
+</body>
+</html>
