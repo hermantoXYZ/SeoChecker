@@ -314,7 +314,10 @@
     </div>
     <div class="wap-subbar">
       <span>&raquo; Free Mobile &amp; Web SEO Audit Tool</span>
-      <a href="/page/tentang-kami">[Tentang Kami]</a>
+      <span>
+        <a href="/page/panduan-konsep">[Panduan Konsep]</a> |
+        <a href="/page/tentang-kami">[Tentang Kami]</a>
+      </span>
     </div>
 
     <!-- Form Pencarian -->
@@ -398,6 +401,11 @@
             <span style="font-weight:normal; color:#64748b; font-size:11px;">(+{{ c.points }} pts)</span>
           </div>
           <div class="item-detail">{{ c.detail }}</div>
+          {% if c.anchor %}
+          <div style="margin-top: 3px; font-size: 11px;">
+            <a href="/page/panduan-konsep#{{ c.anchor }}" style="color:#003399; text-decoration:underline;">&raquo; Pelajari Konsep &amp; Penerapannya &raquo;</a>
+          </div>
+          {% endif %}
         </li>
         {% endfor %}
       </ul>
@@ -434,6 +442,7 @@
 
     <!-- Footer -->
     <div class="wap-footer">
+      <a href="/page/panduan-konsep">[Panduan Konsep SEO]</a> |
       <a href="/page/tentang-kami">[Tentang Kami]</a> |
       <a href="#top" onclick="window.scrollTo(0,0); return false;">[Top]</a> |
       <a href="/">[Home]</a><br />

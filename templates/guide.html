@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan &amp; Konsep Parameter Audit SEO - SEOChecker</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #d6dde5;
+      font-family: Tahoma, Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      color: #111111;
+      line-height: 1.48;
+    }
+
+    .wap-container {
+      max-width: 480px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-left: 1px solid #99aabb;
+      border-right: 1px solid #99aabb;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wap-header {
+      background: linear-gradient(to bottom, #1e5799 0%, #0d3360 100%);
+      color: #ffffff;
+      padding: 8px 10px;
+      border-bottom: 2px solid #ff9900;
+    }
+
+    .wap-header h1 {
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .wap-header h1 a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .wap-header h1 span {
+      color: #ffcc00;
+    }
+
+    .wap-subbar {
+      background-color: #e8eef5;
+      border-bottom: 1px solid #b8c7d9;
+      padding: 5px 10px;
+      font-size: 11px;
+      color: #334455;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .wap-subbar a {
+      color: #003399;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* Author / Developer Card di Bagian Awal */
+    .author-box {
+      background-color: #fffbe6;
+      border-bottom: 1px solid #e5d48b;
+      padding: 9px 10px;
+      font-size: 11px;
+      color: #1e293b;
+    }
+
+    .author-title {
+      font-weight: bold;
+      color: #0d3360;
+      font-size: 12px;
+      margin-bottom: 2px;
+    }
+
+    .author-affil {
+      color: #475569;
+      margin-bottom: 5px;
+      line-height: 1.35;
+    }
+
+    .author-links a {
+      display: inline-block;
+      color: #003399;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-right: 8px;
+    }
+
+    .sec-bar {
+      background-color: #2b5b84;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-top: 1px solid #1a3c5a;
+      border-bottom: 1px solid #1a3c5a;
+    }
+
+    .sec-bar-orange {
+      background-color: #e67e00;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-top: 1px solid #b36200;
+      border-bottom: 1px solid #b36200;
+    }
+
+    .content-box {
+      padding: 10px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #cbd5e1;
+      font-size: 12px;
+      color: #222222;
+    }
+
+    .content-box p {
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    .content-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .pillar-list {
+      list-style: none;
+      margin: 6px 0;
+      border: 1px solid #cbd5e1;
+      background-color: #f8fafc;
+    }
+
+    .pillar-list li {
+      padding: 6px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .pillar-list li:last-child {
+      border-bottom: none;
+    }
+
+    .toc-box {
+      background-color: #f0f4f9;
+      border-bottom: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      font-size: 11px;
+    }
+
+    .toc-title {
+      font-weight: bold;
+      color: #0d3360;
+      margin-bottom: 5px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3px;
+    }
+
+    .toc-link {
+      color: #003399;
+      text-decoration: underline;
+      display: block;
+    }
+
+    .param-card {
+      border-bottom: 2px solid #cbd5e1;
+      background-color: #ffffff;
+    }
+
+    .param-header {
+      background-color: #eef3f9;
+      padding: 8px 10px;
+      border-top: 1px solid #d5dfe9;
+      border-bottom: 1px solid #d5dfe9;
+    }
+
+    .param-tag {
+      display: inline-block;
+      background-color: #0d3360;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 1px 6px;
+      border-radius: 2px;
+      margin-bottom: 3px;
+    }
+
+    .param-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #0d3360;
+    }
+
+    .param-body {
+      padding: 10px;
+      font-size: 12px;
+      color: #222222;
+    }
+
+    .param-body p {
+      margin-bottom: 8px;
+      text-align: justify;
+    }
+
+    .param-subhead {
+      font-weight: bold;
+      color: #2b5b84;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-bottom: 1px dotted #cbd5e1;
+      padding-bottom: 2px;
+    }
+
+    .code-box {
+      background-color: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 11px;
+      color: #0f172a;
+      overflow-x: auto;
+      margin: 6px 0;
+      line-height: 1.4;
+      word-break: break-all;
+      white-space: pre-wrap;
+    }
+
+    .code-bad {
+      border-left: 3px solid #dc2626;
+      background-color: #fef2f2;
+    }
+
+    .code-good {
+      border-left: 3px solid #16a34a;
+      background-color: #f0fdf4;
+    }
+
+    .tip-box {
+      background-color: #fffbe6;
+      border: 1px solid #fde047;
+      border-left: 3px solid #ca8a04;
+      padding: 6px 8px;
+      font-size: 11px;
+      color: #713f12;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    .back-top-bar {
+      padding: 4px 10px;
+      background-color: #f1f5f9;
+      border-top: 1px solid #e2e8f0;
+      font-size: 10px;
+      text-align: right;
+    }
+
+    .back-top-bar a {
+      color: #003399;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+
+    .wap-footer {
+      margin-top: auto;
+      background-color: #0d3360;
+      color: #ffffff;
+      text-align: center;
+      font-size: 11px;
+      padding: 8px 10px;
+      border-top: 2px solid #ff9900;
+    }
+
+    .wap-footer a {
+      color: #ffcc00;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="wap-container">
+    <!-- Header -->
+    <div class="wap-header">
+      <h1><a href="/">SEO<span>Checker</span></a></h1>
+    </div>
+    <div class="wap-subbar">
+      <span>&raquo; Modul Konsep &amp; Teori Parameter Audit SEO</span>
+      <span>
+        <a href="/">&laquo; Cek Web</a> |
+        <a href="/page/tentang-kami">[Tentang Kami]</a>
+      </span>
+    </div>
+
+    <!-- Identitas Pengembang & Penulis Materi -->
+    <div class="author-box">
+      <div class="author-title">Disusun &amp; Dikembangkan oleh: Andi Hermanto</div>
+      <div class="author-affil">
+        Dosen Program Studi Bisnis Digital — Fakultas Ekonomi dan Bisnis, Universitas Negeri Makassar (FEB UNM)
+      </div>
+      <div class="author-links">
+        &raquo; <a href="https://github.com/hermantoXYZ" target="_blank" rel="noopener">[GitHub: hermantoXYZ]</a>
+      </div>
+    </div>
+
+      <div class="sec-bar-orange">[+] SEO FindStock</div>
+
+<div class="content-box">
+  <p>
+    <b>SEO FindStock</b> merupakan inisiatif dari proses pembelajaran dan untuk peningkatan pada ekosistem digital terapan yang dikembangkan oleh <b>Andi Hermanto</b> (Dosen Program Studi Bisnis Digital, Fakultas Ekonomi dan Bisnis, Universitas Negeri Makassar) sebagai representasi brand akademik dalam menjembatani teori digital marketing.
+  </p>
+  <p>
+    Secara konseptual, nama <b>FindStock</b> merepresentasikan arsitektur sistematis pengelolaan aset informasi digital di mesin pencari (Search Engines):
+  </p>
+  <ul class="pillar-list">
+    <li><b>FIND (Finding &amp; Indexing):</b> Memastikan setiap aset halaman web, konten edukasi, dan entitas bisnis mudah ditemukan (<i>discoverable</i>) dan terindeks secara presisi oleh algoritma mesin pencari.</li>
+    <li><b>S (Structuring):</b> Menata hierarki semantik HTML, metadata, skema data terstruktur (JSON-LD), serta arsitektur tautan internal agar selaras dengan logika perayapan bot.</li>
+    <li><b>T (Task):</b> Menyediakan instrumen praktik dan simulasi audit langsung bagi mahasiswa maupun pelaku UMKM dalam mengeksekusi tugas optimasi On-Page dan Technical SEO secara terukur.</li>
+    <li><b>OCK (Optimization, Content &amp; Knowledge):</b> Mengintegrasikan optimasi performa web, kedalaman konten berbasis <i>E-E-A-T</i>, serta basis pengetahuan akademik menjadi keunggulan kompetitif bisnis digital yang berkelanjutan.</li>
+  </ul>
+  <p>
+    Melalui pendekatan <b>FindStock</b>, praktik <i>Search Engine Optimization</i> tidak lagi dipahami sekadar sebagai upaya mengejar peringkat kata kunci semata, melainkan sebagai disiplin <b>penataan pengetahuan digital (<i>Knowledge Structuring</i>)</b> yang mengubah informasi terstruktur menjadi visibilitas, kredibilitas, dan nilai ekonomi nyata.
+  </p>
+</div>
+    <div class="sec-bar-orange">[*] Kerangka Konseptual &amp; Teori Mesin Pencari</div>
+    <div class="content-box">
+      <p>
+        Dalam ekosistem <b>Digital Marketing</b>, <i>Search Engine Optimization (SEO)</i> merupakan strategi akuisisi lalu lintas organik (<i>organic traffic</i>) yang berfokus pada peningkatan visibilitas aset digital (web, aplikasi, dsb.) di halaman hasil mesin pencari (<i>Search Engine Results Page / SERP</i>). Berbeda dengan iklan berbayar (SEM/PPC) yang semuanya berpatokan pada anggaran yang dikeluarkan untuk mendatangkan trafik, optimasi SEO tentunya membangun ekuitas digital jangka panjang dengan memperbaiki struktur teknis web agar sesuai dengan pencarian pengguna (<i>Search Intent</i>).
+      </p>
+      <p>
+        Untuk memahami mengapa ke-<b>19 parameter audit</b> pada <code>SEOChecker</code> <b>Seo Findstock</b> dievaluasi secara sistematis, kita perlu meninjau tiga tahapan kerja algoritma mesin pencari (Googlebot):
+      </p>
+      <ul class="pillar-list">
+        <li><b>1. Crawling (Perayapan):</b> Proses bot mengikuti tautan (internal &amp; eksternal) serta membaca file instruksi (<code>robots.txt</code> dan <code>sitemap.xml</code>) untuk menemukan dokumen baru atau pembaruan halaman.</li>
+        <li><b>2. Indexing (Pengindeksan):</b> Mesin pencari mengurai struktur HTML (<code>&lt;title&gt;</code>, <code>&lt;h1&gt;</code>, <code>meta</code>, <code>alt</code>, <code>JSON-LD</code>) guna memahami konteks semantik, bahasa, dan kualitas konten sebelum menyimpannya ke dalam basis data indeks raksasa.</li>
+        <li><b>3. Ranking &amp; Serving (Pemeringkatan):</b> Ketika pengguna mengetikkan kueri, algoritma menyaring ribuan kandidat halaman berdasarkan relevansi topik, pengalaman pengguna (<i>Mobile-First &amp; Core Web Vitals</i>), keamanan protokol (<i>HTTPS</i>), serta kredibilitas otoritas (<i>E-E-A-T &amp; Backlinks</i>).</li>
+      </ul>
+      <p>
+        Dalam kerangka pemasaran digital modern (<i>AIDA / Customer Journey Funnel</i>), SEO berperan menangkap prospek pada fase <i>Awareness</i> (kueri informasional), <i>Consideration</i> (kueri komparatif), hingga <i>Conversion</i> (kueri transaksional) dengan biaya akuisisi pelanggan (CAC) yang lebih efisien.
+      </p>
+    </div>
+
+    <!-- Daftar Isi Cepat -->
+    <div class="sec-bar">[+] Daftar Isi Cepat (19 Parameter Audit)</div>
+    <div class="toc-box">
+      <div class="toc-title">Kategori A: Meta &amp; Document Basics (32 Poin)</div>
+      <div class="toc-grid">
+        <a class="toc-link" href="#title">&raquo; 1. Meta Title Tag (&lt;title&gt;)</a>
+        <a class="toc-link" href="#meta-description">&raquo; 2. Meta Description</a>
+        <a class="toc-link" href="#page-url">&raquo; 3. Page URL &amp; Struktur Slug</a>
+        <a class="toc-link" href="#language">&raquo; 4. Language Declaration (HTML lang)</a>
+        <a class="toc-link" href="#hreflang">&raquo; 5. Alternate / Hreflang Links</a>
+        <a class="toc-link" href="#other-meta">&raquo; 6. Canonical, Robots &amp; Open Graph</a>
+        <a class="toc-link" href="#doctype-charset">&raquo; 7. Doctype HTML5 &amp; Charset Encoding</a>
+        <a class="toc-link" href="#favicon">&raquo; 8. Favicon &amp; Brand Iconography</a>
+      </div>
+      <div class="toc-title" style="margin-top: 8px;">Kategori B: Content &amp; Headings (25 Poin)</div>
+      <div class="toc-grid">
+        <a class="toc-link" href="#h1-heading">&raquo; 9. Heading 1 (Tag &lt;h1&gt;)</a>
+        <a class="toc-link" href="#headings-structure">&raquo; 10. Hierarki Sub-Heading (H2–H4)</a>
+        <a class="toc-link" href="#content-word-count">&raquo; 11. Word Count &amp; Topical Depth</a>
+        <a class="toc-link" href="#page-quality-schema">&raquo; 12. Text/HTML Ratio &amp; Schema JSON-LD</a>
+      </div>
+      <div class="toc-title" style="margin-top: 8px;">Kategori C: Links &amp; Media (20 Poin)</div>
+      <div class="toc-grid">
+        <a class="toc-link" href="#internal-links">&raquo; 13. Internal Linking &amp; Silo Architecture</a>
+        <a class="toc-link" href="#external-links">&raquo; 14. External Outbound Links &amp; Nofollow</a>
+        <a class="toc-link" href="#image-seo">&raquo; 15. Image SEO (Alt Text &amp; Lazy Load)</a>
+      </div>
+      <div class="toc-title" style="margin-top: 8px;">Kategori D &amp; E: Technical, Server &amp; Off-Page (23 Poin)</div>
+      <div class="toc-grid">
+        <a class="toc-link" href="#mobile-optimization">&raquo; 16. Mobile Viewport &amp; Responsive Web</a>
+        <a class="toc-link" href="#performance">&raquo; 17. Load Speed &amp; Web Performance</a>
+        <a class="toc-link" href="#server-configuration">&raquo; 18. Server Security (HTTPS &amp; Cache)</a>
+        <a class="toc-link" href="#external-factors">&raquo; 19. robots.txt, sitemap.xml &amp; Sinyal Web</a>
+      </div>
+    </div>
+
+    <div class="sec-bar-orange">A. Meta &amp; Document Basics (Fondasi Metadata)</div>
+
+    <!-- 1. Title -->
+    <div class="param-card" id="title">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 10 Poin</span>
+        <div class="param-title">1. Meta Title Tag (&lt;title&gt;)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Tag <code>&lt;title&gt;</code> adalah sinyal relevansi On-Page paling fundamental dalam pemrosesan bahasa mesin pencari. Elemen ini menentukan judul utama berwarna biru yang muncul pada hasil pencarian (SERP), tab peramban, serta tautan saat dibagikan. Algoritma pencocokan leksikal dan semantik (seperti BERT dan RankBrain) membandingkan frasa pada <code>&lt;title&gt;</code> dengan kueri pengguna untuk mengukur kesesuaian topik.
+        </p>
+
+        <div class="param-subhead">Standar Evaluasi SEOChecker</div>
+        <p>
+          Panjang optimal adalah <b>30 hingga 65 karakter</b> (setara lebar maksimum ±580–600 piksel pada tampilan desktop Google). Judul terlalu pendek gagal memanfaatkan ruang semantik kata kunci, sedangkan judul di atas 65 karakter akan terpotong (<i>truncated</i>) atau ditulis ulang secara otomatis oleh Google (<i>Title Rewrite</i>).
+        </p>
+
+        <div class="param-subhead">Contoh Penerapan</div>
+        <div class="code-box code-good">
+&lt;!-- Rekomendasi: Kata Kunci Diferensiasi + Brand --&gt;
+&lt;title&gt;Kursus Digital Marketing Bersertifikat dst..&lt;/title&gt;
+        </div>
+        <div class="code-box code-bad">
+&lt;!-- Hindari: Terlalu pendek, duplikat, atau keyword stuffing --&gt;
+&lt;title&gt;Home | Kursus, Belajar, Les, Murah, Bagus, Terbaik&lt;/title&gt;
+        </div>
+
+        <div class="tip-box">
+          <b>Strategi Digital Marketing:</b> Terapkan teknik <i>front-loading</i> (menempatkan kata kunci target di 3 kata pertama) dan pastikan tidak ada dua halaman berbeda dalam satu website yang memiliki tag <code>&lt;title&gt;</code> identik (<i>duplicate title</i>).
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <div class="param-card" id="meta-description">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 8 Poin</span>
+        <div class="param-title">2. Meta Description</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Meta description berfungsi sebagai ringkasan (<i>snippet</i>) yang mempromosikan isi halaman di bawah judul SERP. Secara algoritmik, tag ini tidak menjadi bobot peringkat langsung, tetapi berperan krusial sebagai pengungkit <b>Organic Click-Through Rate (CTR)</b>. Ketika pengguna melihat kata kunci mereka tercetak tebal (<i>bold</i>) di dalam deskripsi yang relevan, probabilitas klik meningkat signifikan.
+        </p>
+
+        <div class="param-subhead">Standar Evaluasi SEOChecker</div>
+        <p>
+          Rentang ideal berada pada <b>110 hingga 165 karakter</b>. Jika dikosongkan, mesin pencari akan mengambil cuplikan paragraf secara acak dari badan halaman yang sering kali kurang persuasif dari sisi pemasaran.
+        </p>
+
+        <div class="param-subhead">Contoh Penerapan</div>
+        <div class="code-box code-good">
+&lt;meta name="description" content="Pelajari strategi SEO, social media ads, dan analitik bisnis digital bersama dosen ahli FEB UNM. Dapatkan kurikulum praktis dan portofolio nyata."&gt;
+        </div>
+
+        <div class="tip-box">
+          <b>Formula Copywriting SERP:</b> Gabungkan <i>Target Keyword</i> + <i>Unique Value Proposition (UVP)</i> + <i>Call to Action (CTA)</i> aktif dalam maksimal dua kalimat ringkas.
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="param-card" id="page-url">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 4 Poin</span>
+        <div class="param-title">3. Page URL &amp; Struktur Slug</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          URL (<i>Uniform Resource Locator</i>) mencerminkan taksonomi informasi sebuah situs web. Struktur slug yang bersih memudahkan mesin pencari memetakan hubungan induk-anak antar-halaman serta meningkatkan kepercayaan pengguna sebelum mengklik tautan.
+        </p>
+
+        <div class="param-subhead">Standar Evaluasi SEOChecker</div>
+        <p>
+          URL dinilai optimal jika berdurasi <b>maksimal 85 karakter</b>, menggunakan huruf kecil seluruhnya, bebas dari parameter kueri dinamis berlapis (<code>?id=...&amp;ref=...</code>), dan memakai tanda hubung strip (<code>-</code>) sebagai pemisah kata. Tanda garis bawah (<code>_</code>) dihindari karena dibaca oleh parser mesin pencari sebagai satu rangkaian kata tanpa spasi.
+        </p>
+
+        <div class="param-subhead">Contoh Penerapan</div>
+        <div class="code-box code-good">
+https://bisdigunm.com/panduan-belajar-seo-pemula
+        </div>
+        <div class="code-box code-bad">
+https://bisdigunm.com/index.php?page_id=97&amp;cat_name=seo_2026
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <div class="param-card" id="language">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 3 Poin</span>
+        <div class="param-title">4. Deklarasi Bahasa (&lt;html lang="..."&gt;)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Atribut <code>lang</code> pada tag pembuka <code>&lt;html&gt;</code> menetapkan bahasa utama konten berdasarkan standar ISO 639-1. Informasi ini digunakan oleh mesin pencari untuk menyesuaikan hasil pencarian regional (<i>geo-linguistic targeting</i>), membantu perangkat bantu aksesibilitas tunanetra (<i>screen reader</i>) melafalkan teks dengan aksen yang benar, serta memicu fitur terjemahan otomatis peramban.
+        </p>
+
+        <div class="param-subhead">Contoh Penerapan</div>
+        <div class="code-box code-good">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+  &lt;head&gt;...&lt;/head&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="param-card" id="hreflang">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 2 Poin</span>
+        <div class="param-title">5. Alternate &amp; Hreflang Links</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Pada situs bisnis lintas negara atau portal akademik dwibahasa, atribut <code>rel="alternate" hreflang="xx"</code> memetakan hubungan ekuivalensi antar-versi bahasa. Tanpa atribut ini, algoritma dapat menganggap halaman terjemahan dengan tata letak serupa sebagai duplikasi konten (<i>duplicate content</i>) atau menampilkan halaman berbahasa Inggris kepada pengguna di Indonesia.
+        </p>
+
+        <div class="param-subhead">Contoh Penerapan</div>
+        <div class="code-box code-good" style="font-size: 7px;">
+&lt;link rel="alternate" hreflang="id" href="https://do.com/id/layanan" /&gt;
+&lt;link rel="alternate" hreflang="en" href="https://do.com/en/services" /&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://do.com/en/services" /&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 6. Other Meta Tags -->
+    <div class="param-card" id="other-meta">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 3 Poin</span>
+        <div class="param-title">6. Meta Tags Pendukung (Canonical, Robots, OG &amp; Twitter)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Kelompok tag ini mengatur tata kelola pengindeksan sekaligus distribusi visual lintas kanal pemasaran digital:
+        </p>
+        <p>
+          <b>&bull; Canonical Tag (<code>rel="canonical"</code>):</b> Mengonsolidasikan sinyal peringkat dari beberapa variasi URL (misalnya parameter UTM kampanye <code>?utm_source=ig</code> atau filter urutan produk) ke satu URL utama.<br />
+          <b>&bull; Meta Robots:</b> Memberi instruksi eksplisit kepada bot apakah halaman boleh diindeks (<code>index</code>) dan tautannya boleh ditelusuri (<code>follow</code>).<br />
+          <b>&bull; Open Graph (<code>og:title</code>, <code>og:image</code>) &amp; Twitter Cards:</b> Mengoptimalkan kartu pratinjau visual ketika tautan dibagikan di WhatsApp, LinkedIn, Facebook, dan X guna mendongkrak <i>Social Referral Traffic</i>.
+        </p>
+
+        <div class="param-subhead">Contoh Penerapan</div>
+        <div class="code-box code-good" style="font-size: 7px;">
+&lt;link rel="canonical" href="https://bisdigunm.com/profil" /&gt;
+&lt;meta name="robots" content="index, follow" /&gt;
+&lt;meta property="og:title" content="Bisnis Digital FEB UNM" /&gt;
+&lt;meta property="og:image" content="https://bisdigunm.com/og-banner.jpg" /&gt;
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="param-card" id="doctype-charset">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 1 Poin</span>
+        <div class="param-title">7. Doctype HTML5 &amp; Charset Encoding</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Deklarasi <code>&lt;!DOCTYPE html&gt;</code> mengaktifkan <i>Standards Mode</i> pada mesin perender peramban (Blink/WebKit/Gecko) sehingga struktur DOM terurai konsisten. Sementara itu, <code>&lt;meta charset="UTF-8"&gt;</code> menjamin pengkodean karakter Unicode yang mendukung seluruh alfabet, tanda baca, dan simbol mata uang tanpa kerusakan teks.
+        </p>
+
+        <div class="code-box code-good">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 8. Favicon -->
+    <div class="param-card" id="favicon">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 1 Poin</span>
+        <div class="param-title">8. Favicon &amp; Brand Iconography</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Google Search menampilkan ikon situs (favicon) secara mencolok di bagian atas setiap hasil pencarian seluler maupun desktop. Dari perspektif pemasaran merek (<i>Brand Equity</i>), favicon yang tajam membedakan situs Anda secara visual dari kompetitor di SERP dan mencegah error <code>404 Not Found</code> berulang pada log server ketika peramban otomatis meminta <code>/favicon.ico</code>.
+        </p>
+
+        <div class="code-box code-good" style="font-size: 7px;">
+&lt;link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png"&gt;
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="sec-bar-orange">B. Content &amp; Headings (Struktur &amp; Kualitas Konten)</div>
+
+    <div class="param-card" id="h1-heading">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 8 Poin</span>
+        <div class="param-title">9. Heading 1 (&lt;h1&gt;)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Tag <code>&lt;h1&gt;</code> adalah penanda semantik utama di dalam badan dokumen (<code>&lt;body&gt;</code>) yang mendefinisikan subjek sentral halaman. Jika <code>&lt;title&gt;</code> ditujukan untuk pengguna di SERP, maka <code>&lt;h1&gt;</code> mengonfirmasi kepada pengunjung yang baru mendarat di halaman bahwa mereka berada di tempat yang tepat—sehingga menekan tingkat pentalan instan (<i>Pogo-sticking</i>).
+        </p>
+
+        <div class="param-subhead">Standar Evaluasi SEOChecker</div>
+        <p>
+          Setiap halaman wajib memiliki <b>tepat 1 tag <code>&lt;h1&gt;</code></b> yang deskriptif dan selaras secara semantik dengan tag <code>&lt;title&gt;</code>.
+        </p>
+
+        <div class="code-box code-good">
+&lt;h1&gt;Strategi Digital Marketing untuk Akselerasi Bisnis UMKM&lt;/h1&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 10. Headings Structure (H2-H4) -->
+    <div class="param-card" id="headings-structure">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 5 Poin</span>
+        <div class="param-title">10. Hierarki Sub-Heading (H2–H4)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Sub-heading (<code>&lt;h2&gt;</code> hingga <code>&lt;h4&gt;</code>) membangun struktur pohon topik (<i>semantic outline</i>). Melalui teknologi <b>Google Passage Ranking</b>, mesin pencari dapat mengindeks bagian-bagian spesifik di bawah sub-heading <code>&lt;h2&gt;</code> atau <code>&lt;h3&gt;</code> untuk menjawab pertanyaan spesifik pengguna pada fitur <b>Featured Snippets</b> (Posisi Nol).
+        </p>
+
+        <div class="code-box code-good">
+&lt;h1&gt;Panduan Lengkap SEO On-Page&lt;/h1&gt;
+  &lt;h2&gt;1. Optimasi Metadata&lt;/h2&gt;
+    &lt;h3&gt;A. Menulis Meta Title yang Menarik&lt;/h3&gt;
+    &lt;h3&gt;B. Menyusun Meta Description Persuasif&lt;/h3&gt;
+  &lt;h2&gt;2. Optimasi Gambar Digital&lt;/h2&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 11. Content & Word Count -->
+    <div class="param-card" id="content-word-count">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 7 Poin</span>
+        <div class="param-title">11. Word Count &amp; Topical Depth</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Meskipun jumlah kata bukan faktor peringkat mekanis secara langsung, kedalaman pembahasan (<i>Topical Depth</i>) berkorelasi kuat dengan kemampuan halaman dalam menjawab berbagai variasi kueri turunan (<i>Long-tail Keywords</i>). Halaman dengan sedikit sekali teks (&lt; 100 kata) berisiko diklasifikasikan sebagai <b>Thin Content</b> oleh <i>Google Helpful Content System</i>.
+        </p>
+
+        <div class="param-subhead">Standar Evaluasi &amp; Kerangka E-E-A-T</div>
+        <p>
+          <code>SEOChecker</code> mensyaratkan minimal <b>300 kata teks terlihat</b> untuk lolos standar dasar. Untuk memenangkan persaingan kata kunci kompetitif, konten harus memenuhi prinsip <b>E-E-A-T</b> (<i>Experience, Expertise, Authoritativeness, Trustworthiness</i>) dengan menyajikan data empiris, studi kasus, dan analisis mendalam.
+        </p>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <div class="param-card" id="page-quality-schema">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 5 Poin</span>
+        <div class="param-title">12. Text/HTML Ratio &amp; Schema JSON-LD</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          <b>&bull; Text-to-HTML Ratio:</b> Mengukur efisiensi kode dengan membandingkan volume teks informasi terhadap total ukuran markup HTML. Rasio di atas 10% menandakan struktur kode yang bersih dari pembengkakan skrip inline.<br />
+          <b>&bull; Structured Data (Schema.org JSON-LD):</b> Kosakata semantik standar yang menerjemahkan isi halaman menjadi entitas terstruktur bagi <i>Google Knowledge Graph</i>, memungkinkan munculnya <b>Rich Results</b> (rating bintang, harga, jadwal acara, hingga FAQ) di SERP.
+        </p>
+
+        <div class="code-box code-good">
+&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Bisnis Digital FEB UNM",
+  "url": "https://bisdigunm.com"
+}
+&lt;/script&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="sec-bar-orange">C. Links &amp; Media (Tautan &amp; Aset Multimedia)</div>
+
+    <div class="param-card" id="internal-links">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 8 Poin</span>
+        <div class="param-title">13. Internal Linking &amp; Silo Architecture</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Dalam teori grafik web dan algoritma <b>PageRank</b>, tautan internal berfungsi mengalirkan otoritas halaman (<i>Link Equity</i>) dari halaman berotoritas tinggi (seperti beranda) menuju halaman-halaman terdalam. Arsitektur tautan internal yang terstruktur (<i>Topic Cluster / Silo</i>) juga mencegah terciptanya halaman yatim (<i>Orphan Pages</i>) yang gagal ditemukan crawler.
+        </p>
+
+        <div class="param-subhead">Standar Evaluasi SEOChecker</div>
+        <p>
+          Disarankan memiliki <b>minimal 3 tautan internal</b> yang menggunakan teks jangkar (<i>anchor text</i>) deskriptif dan bebas dari tautan kosong tanpa label teks.
+        </p>
+
+        <div class="code-box code-good">
+&lt;a href="/kurikulum"&gt;Lihat Kurikulum Bisnis Digital FEB UNM&lt;/a&gt;
+        </div>
+        <div class="code-box code-bad">
+&lt;a href="/kurikulum"&gt;Klik Disini&lt;/a&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 14. External Links -->
+    <div class="param-card" id="external-links">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 4 Poin</span>
+        <div class="param-title">14. External Outbound Links &amp; Atribut Tautan</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Tautan keluar (<i>outbound links</i>) menuju sumber referensi tepercaya (jurnal ilmiah, portal pemerintah, dokumentasi resmi) membantu algoritma memetakan lingkungan topik situs Anda (<i>Co-citation &amp; Topical Neighborhood</i>) serta memvalidasi keakuratan informasi yang disajikan.
+        </p>
+
+        <div class="param-subhead">Tata Kelola Atribut Rel</div>
+        <p>
+          Gunakan atribut <code>rel="sponsored"</code> untuk tautan iklan/afiliasi, <code>rel="ugc"</code> untuk konten buatan pengguna (komentar/forum), dan <code>rel="nofollow"</code> bila tidak ingin meneruskan sinyal dukungan editorial.
+        </p>
+
+        <div class="code-box code-good" style="font-size: 7px;">
+&lt;a href="https://doi.org/10.31004/riggs.v4i4.3186" target="_blank" rel="noopener"&gt;
+  Jurnal RIGGS: Social Media Analysis
+&lt;/a&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 15. Image SEO -->
+    <div class="param-card" id="image-seo">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 8 Poin</span>
+        <div class="param-title">15. Image SEO (Alt Text &amp; Lazy Loading)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Atribut <code>alt</code> (<i>alternative text</i>) menerjemahkan konten visual menjadi deskripsi tekstual bagi bot pengindeks gambar maupun teknologi asistif tunanetra. Gambar yang teroptimasi membuka kanal trafik organik tambahan melalui <b>Google Images</b> dan <b>Google Lens</b>.
+        </p>
+
+        <div class="param-subhead">Efisiensi Performa Gambar</div>
+        <p>
+          Terapkan atribut <code>loading="lazy"</code> pada gambar di luar layar awal agar peramban memprioritaskan pemuatan elemen utama di bagian atas halaman, serta cantumkan dimensi <code>width</code> dan <code>height</code> untuk mencegah pergeseran tata letak (<i>Cumulative Layout Shift / CLS</i>).
+        </p>
+
+        <div class="code-box code-good" style="font-size: 7px;">
+&lt;img src="/img/lab-bisdig.webp" 
+     alt="Mahasiswa Bisnis Digital FEB UNM Praktik Analisis Big Data" 
+     loading="lazy" 
+     width="600" height="400"&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="sec-bar-orange">D. Technical &amp; Server (Infrastruktur &amp; Kinerja)</div>
+
+    <!-- 16. Mobile Optimization -->
+    <div class="param-card" id="mobile-optimization">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 6 Poin</span>
+        <div class="param-title">16. Mobile Optimization &amp; Meta Viewport</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Di bawah kebijakan <b>Mobile-First Indexing</b>, Google merayapi, mengindeks, dan mengevaluasi seluruh halaman web menggunakan agen pengguna seluler (<i>Googlebot Smartphone</i>). Mengingat lebih dari 65% pencarian global berasal dari perangkat ponsel, ketidaksiapan tampilan seluler akan menurunkan peringkat situs secara menyeluruh, termasuk pada pencarian desktop.
+        </p>
+
+        <div class="code-box code-good" style="font-size: 7px;">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 17. Performance -->
+    <div class="param-card" id="performance">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 6 Poin</span>
+        <div class="param-title">17. Load Speed &amp; Web Performance</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          Kecepatan akses adalah faktor peringkat resmi dalam sinyal <b>Google Page Experience</b> dan <b>Core Web Vitals</b>, yang mencakup tiga pilar utama: <b>LCP</b> (<i>Largest Contentful Paint</i> &le; 2.5 detik), <b>INP</b> (<i>Interaction to Next Paint</i> &le; 200 ms), dan <b>CLS</b> (<i>Cumulative Layout Shift</i> &le; 0.1). Server yang lambat merespons (<i>Time to First Byte / TTFB</i> tinggi) juga membatasi jumlah halaman yang dapat dirayapi bot dalam satu sesi.
+        </p>
+
+        <div class="tip-box">
+          <b>Optimasi Teknis:</b> Pertahankan waktu respons HTML di bawah <b>1.5 detik</b>, gunakan kompresi aset statis, minifikasi CSS/JS, serta distribusi konten melalui jaringan Edge CDN.
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <!-- 18. Server Configuration -->
+    <div class="param-card" id="server-configuration">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 6 Poin</span>
+        <div class="param-title">18. Server Security (HTTPS, Status &amp; Kompresi)</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          <b>&bull; Enkripsi HTTPS (TLS/SSL):</b> Menjamin kerahasiaan dan integritas transmisi data antara peramban pengguna dan server. HTTPS merupakan sinyal peringkat terkonfirmasi Google serta syarat wajib kepercayaan transaksi digital.<br />
+          <b>&bull; HTTP Status Code 200 OK:</b> Memastikan endpoint halaman tersedia tanpa rantai pengalihan berulang (<i>redirect chains</i> 301/302) maupun kesalahan server (5xx).<br />
+          <b>&bull; Kompresi &amp; Caching Header:</b> Pengaktifan <code>Gzip</code> atau <code>Brotli</code> memangkas ukuran transfer payload HTML hingga 70%, sedangkan header <code>Cache-Control</code> mempercepat kunjungan berulang.
+        </p>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+    <div class="sec-bar-orange">E. External Factors &amp; Crawlability (Akses Perayap &amp; Ekosistem)</div>
+
+    <div class="param-card" id="external-factors">
+      <div class="param-header">
+        <span class="param-tag">Bobot: 5 Poin</span>
+        <div class="param-title">19. robots.txt, sitemap.xml &amp; Sinyal Eksternal</div>
+      </div>
+      <div class="param-body">
+        <div class="param-subhead">Konsep &amp; Peran Algoritma</div>
+        <p>
+          <b>&bull; Tata Kelola Crawl Budget (<code>robots.txt</code>):</b> Mengarahkan bot agar tidak membuang kapasitas perayapan pada halaman administratif, keranjang belanja, atau hasil pencarian internal.<br />
+          <b>&bull; Akselerasi Penemuan URL (<code>sitemap.xml</code>):</b> Menyediakan peta jalan terstruktur seluruh halaman kanonik lengkap dengan metadata pembaruan terakhir (<code>&lt;lastmod&gt;</code>).<br />
+          <b>&bull; Off-Page Signals (Backlinks &amp; Social Profiles):</b> Dalam studi literatur SEO (Berman &amp; Katona, 2013; Evans, 2007), tautan balik (<i>backlinks</i>) dari domain eksternal bereputasi bertindak sebagai "suara kepercayaan" (<i>editorial votes</i>) yang menentukan otoritas domain (<i>Domain Authority</i>), diperkuat oleh konsistensi identitas pada kanal media sosial resmi.
+        </p>
+
+        <div class="code-box code-good">
+User-agent: *
+Disallow: /admin/
+Disallow: /checkout/
+Sitemap: https://bisdigunm.com/sitemap.xml
+        </div>
+      </div>
+      <div class="back-top-bar"><a href="#top">&uarr; Kembali ke Atas</a></div>
+    </div>
+
+    <div class="sec-bar">[+] Matriks Tindak Lanjut Setelah Melakukan Audit</div>
+    <div class="content-box">
+      <p>
+        Bagi mahasiswa, praktisi bisnis, dan pengelola situs web, gunakan tahapan prioritas berikut untuk menindaklanjuti skor hasil pemindaian <code>SEOChecker</code>:
+      </p>
+      <p>
+        <b>1. Prioritas Kritis (Status FAIL):</b> Segera perbaiki kendala fundamental yang menghambat perayapan atau tampilan dasar, seperti ketiadaan tag <code>&lt;title&gt;</code>, tidak aktifnya HTTPS, hilangnya tag <code>viewport</code>, atau tidak adanya tag <code>&lt;h1&gt;</code>.<br />
+        <b>2. Prioritas Optimasi (Status WARN):</b> Sempurnakan kualitas metadata dan konten dengan menyesuaikan panjang title (30–65 karakter) dan description (110–165 karakter), melengkapi atribut <code>alt</code> pada gambar, serta memperkaya kedalaman teks di atas 300 kata.<br />
+        <b>3. Monitoring &amp; Validasi Berkelanjutan:</b> Daftarkan properti domain ke <b>Google Search Console</b>, kirimkan file <code>sitemap.xml</code>, dan evaluasi kinerja <i>Core Web Vitals</i> secara periodik.
+      </p>
+    </div>
+
+    <div class="wap-footer">
+      <a href="/">&laquo; Cek Skor Website Baru</a> |
+      <a href="/page/tentang-kami">[Tentang Kami]</a> |
+      <a href="#top">[Top]</a><br />
+      &copy; SEO for Digital Marketing - Dikembangkan oleh <a href="https://github.com/hermantoXYZ">Andi Hermanto (HermantoXYZ)</a>
+    </div>
+  </div>
+</body>
+</html>

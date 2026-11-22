@@ -1,6 +1,14 @@
 {
     "rewrites": [
         {
+            "source": "/page/panduan-konsep",
+            "destination": "/api/index.py"
+        },
+        {
+            "source": "/page/tentang-kami",
+            "destination": "/api/index.py"
+        },
+        {
             "source": "/page/tentang-kami/",
             "destination": "/api/index.py"
         },
