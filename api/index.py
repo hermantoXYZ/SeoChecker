@@ -16,6 +16,11 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; SEOCheckerBot/1.0; +https://vercel.app)"
 }
 
+STATIC_PAGES = {
+    "page/tentang-kami": "about.html",
+    "page/panduan-konsep": "guide.html",
+}
+
 
 @app.context_processor
 def inject_global_context():
@@ -25,11 +30,13 @@ def inject_global_context():
     }
 
 
+@app.route("/page/tentang-kami", methods=["GET"])
 @app.route("/page/tentang-kami/", methods=["GET"])
 def about_page():
     return render_template("about.html")
 
 
+@app.route("/page/panduan-konsep", methods=["GET"])
 @app.route("/page/panduan-konsep/", methods=["GET"])
 def guide_page():
     return render_template("guide.html")
@@ -320,6 +327,10 @@ def analyze_seo(url: str) -> dict:
     else:
         add_check("Technical & Server", "Server Configuration", "fail", f"HTTP {response.status_code}, HTTPS: {is_https}, Server: {server_hdr}.", 0, anchor="server-configuration")
 
+    # =========================================================================
+    # E. EXTERNAL FACTORS & CRAWLABILITY (Total: 5 Poin)
+    # =========================================================================
+
     has_robots_txt = False
     has_sitemap = False
     try:
@@ -398,10 +409,8 @@ def run_audit_view(slug: str):
 @app.route("/", methods=["GET"])
 def home():
     slug = get_real_target_from_request()
-    if slug == "page/tentang-kami/":
-        return render_template("about.html")
-    if slug == "page/panduan-konsep/":
-        return render_template("guide.html")
+    if slug in STATIC_PAGES:
+        return render_template(STATIC_PAGES[slug])
     if slug:
         return run_audit_view(slug)
     return render_template("index.html", result=None, error=None, target_slug="")
@@ -409,18 +418,15 @@ def home():
 
 @app.route("/<path:target>", methods=["GET"])
 def report_page(target):
-    if target in ("favicon.ico", "robots.txt"):
+    clean_target = target.strip("/")
+    if clean_target in ("favicon.ico", "robots.txt"):
         return "", 204
-    if target == "page/tentang-kami/":
-        return render_template("about.html")
-    if target == "page/panduan-konsep/":
-        return render_template("guide.html")
+    if clean_target in STATIC_PAGES:
+        return render_template(STATIC_PAGES[clean_target])
 
-    slug = get_real_target_from_request(target)
-    if slug == "page/tentang-kami/":
-        return render_template("about.html")
-    if slug == "page/panduan-konsep/":
-        return render_template("guide.html")
+    slug = get_real_target_from_request(clean_target)
+    if slug in STATIC_PAGES:
+        return render_template(STATIC_PAGES[slug])
     if not slug:
         return render_template("index.html", result=None, error=None, target_slug="")
     return run_audit_view(slug)
